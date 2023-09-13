@@ -2,11 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from 'react';
 import { Button, Drawer } from 'antd';
-import './menuStyle.css';
 export default function Menu() {
     const [open, setOpen] = useState(false);
     const [placement, setPlacement] = useState('right');
-
     const showDrawer = () => {
         setOpen(true);
     };
@@ -18,18 +16,14 @@ export default function Menu() {
         const carrinhoAtual = JSON.parse(localStorage.getItem("carrinho")) || [];
         setCarrinho(carrinhoAtual);
     }, []);
-
     const limparCarrinho = () => {
         localStorage.removeItem("carrinho");
         window.location.reload();
         setCarrinho([]);
     };
-
     const calcularTotal = () => {
         return carrinho.reduce((total, produto) => total + produto.price, 0);
     };
-
-
     return <>
         <div class="back">
             <nav class="navbar navbar-expand-lg bg-body-secondary">

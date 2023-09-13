@@ -1,23 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
-import PaginaSobre from './paginas/PaginaSobre';
+/*import das paginas*/
 import PaginaInicial from './paginas/PaginaInicial';
-import Menu from './componentes/Menu';
 import DetalhesProduto from './paginas/DetalhesProduto';
 import PaginaCarrinho from './paginas/PaginaCarrinho';
-import Produto from './componentes/Produto';
-
+/*Criando as rotas*/
 const roteador = createBrowserRouter([
   { path: '/', element: <PaginaInicial /> },
-  { path: '/sobre', element: <PaginaSobre /> },
   { path: '/deta/:id', element: <DetalhesProduto /> },
   { path: '/carrinho', element: <PaginaCarrinho />}
 ]);
-
+/*Renderizando as rotas*/
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

@@ -1,22 +1,19 @@
 import Menu from "../componentes/Menu";
-import { Link, Route, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Card } from 'antd';
-import { EllipsisOutlined } from '@ant-design/icons';
-
-const { Meta } = Card;
-
+/* Criando o produto */
 export default function PaginaInicial() {
+    /* Criando o estado */
     const [produtos, setProdutos] = useState([]);
-    const navigate = useNavigate();
-
+    /* Criando o efeito */
     useEffect(() => {
         axios.get("https://fakestoreapi.com/products").then((response) => {
             setProdutos(response.data);
         });
     }, []);
-
+    /* Criando a função  que adiciona item ao carrinho */
     const adicionarAoCarrinho = (produto) => {
         const carrinhoAtual = JSON.parse(localStorage.getItem("carrinho")) || [];
         const novoCarrinho = [...carrinhoAtual, produto];
@@ -24,7 +21,7 @@ export default function PaginaInicial() {
         localStorage.setItem("carrinho", JSON.stringify(novoCarrinho));
         console.log(produto);
     };
-
+    /* Criando o retorno */
     return (
         <>
             <Menu />
@@ -46,17 +43,15 @@ export default function PaginaInicial() {
                             }} />}
                     >
                         <div style={{ maxHeight: '100px', margin: 'auto', textAlign: 'center' }}>
-                            <Button type="text" style={{ margin: '2px' }}>
+                            <Button  style={{ margin: '2px' }}>
                                 <Link to={`/deta/${produto.id}` }>Leia Mais</Link>
                             </Button>
                             <Button
-                                type="text"
                                 style={{ margin: '2px' }}
                                 onClick={() => adicionarAoCarrinho(produto)}
                             >
                                 Adicionar ao Carrinho
                             </Button>
-
                         </div>
                     </Card>
                 ))}

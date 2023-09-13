@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Menu from "../componentes/Menu";
-import { useNavigate,Link } from "react-router-dom";
-import { Button,Layout,Image, Table} from "antd";
+import { Link } from "react-router-dom";
+import { Button,Image, Table} from "antd";
 import { Content } from "antd/lib/layout/layout";
-import { Footer } from "antd/es/layout/layout";
-
 export default function PaginaCarrinho({ }) { 
     const [carrinho, setCarrinho] = useState([]);
     useEffect(() => {
         const carrinhoAtual = JSON.parse(localStorage.getItem("carrinho")) || [];
         setCarrinho(carrinhoAtual);
     }, []);
-
     const limparCarrinho = () => {
         localStorage.removeItem("carrinho");
         setCarrinho([]);
         window.location.reload();
     };
-
     const calcularTotal = () => {
         const total = data.reduce((acc, item) => acc + item.price, 0);
         return (
@@ -76,7 +72,6 @@ export default function PaginaCarrinho({ }) {
                     <Button type="primary"><Link to='/'>Voltar para Home</Link></Button>
                 </div>
             )}
-            
         </div>
     );
 }
