@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Card } from 'antd';
 /* Criando o produto */
-export default function PaginaInicial() {
+export default function Produto() {
     /* Criando o estado */
     const [produtos, setProdutos] = useState([]);
     /* Criando o efeito */
@@ -24,7 +24,6 @@ export default function PaginaInicial() {
     /* Criando o retorno */
     return (
         <>
-            <Menu />
             <div className="container" style={{ display: 'flex', flexWrap: 'wrap' }}>
                 {produtos.map((produto) => (
                     <Card
